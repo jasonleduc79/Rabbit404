@@ -1,1 +1,794 @@
 
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="theme-color" content="#101112">
+
+<meta name="description" content="RABBIT404: independent investigations, hidden signals, digital archives and evidence-first research.">
+
+<title>RABBIT404 // THE TERRA FILES</title>
+
+<style>
+
+:root{
+
+  --bg:#101112;
+
+  --panel:#1c1e20;
+
+  --orange:#ff702e;
+
+  --text:#f4f0e9;
+
+  --muted:#a4a5a6;
+
+  --line:#36383a;
+
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+
+  margin:0;background:var(--bg);color:var(--text);
+
+  font-family:system-ui,-apple-system,Arial,sans-serif;
+
+  line-height:1.6
+
+}
+
+a{color:inherit;text-decoration:none}
+
+button,input{font:inherit}
+
+.wrap{width:min(1100px,92%);margin:auto}
+
+.mono{font-family:ui-monospace,Consolas,monospace;letter-spacing:.07em}
+
+.orange{color:var(--orange)}
+
+header{
+
+  position:sticky;top:0;z-index:10;
+
+  background:#101112f5;border-bottom:1px solid var(--line)
+
+}
+
+nav{
+
+  min-height:72px;display:flex;align-items:center;
+
+  justify-content:space-between;gap:12px
+
+}
+
+.logo{font-size:25px;font-weight:950;letter-spacing:-1.5px}
+
+nav .links{display:flex;gap:22px;font-size:11px}
+
+nav a:hover{color:var(--orange)}
+
+.btn{
+
+  display:inline-block;border:1px solid var(--orange);
+
+  padding:12px 18px;color:var(--orange);font-size:12px;
+
+  font-weight:800;background:transparent;cursor:pointer
+
+}
+
+.btn.fill{background:var(--orange);color:#111}
+
+.hero{
+
+  padding:90px 0;
+
+  background:radial-gradient(ellipse at 80% 40%,#ff702e20,transparent 55%);
+
+  border-bottom:1px solid var(--line)
+
+}
+
+.hero-grid{
+
+  display:grid;grid-template-columns:1.2fr .8fr;
+
+  align-items:center;gap:45px
+
+}
+
+.kicker{font-size:11px;font-weight:800;color:var(--orange)}
+
+h1{
+
+  font-size:clamp(62px,10vw,120px);
+
+  letter-spacing:-.085em;line-height:.91;
+
+  margin:25px 0
+
+}
+
+h2{
+
+  font-size:clamp(32px,5vw,50px);
+
+  line-height:1.1;letter-spacing:-.05em;
+
+  margin:12px 0 24px
+
+}
+
+p{color:#b8b8b8}
+
+.hero p{font-size:18px;max-width:530px}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+.emblem{
+
+  aspect-ratio:1;display:grid;place-items:center;
+
+  border:1px solid #73432b;
+
+  background:radial-gradient(circle,#ff702e24,#171819 70%);
+
+  position:relative
+
+}
+
+.emblem:before{
+
+  content:"CLASSIFIED // 001";
+
+  position:absolute;right:12px;top:-12px;
+
+  background:var(--orange);color:#111;
+
+  padding:5px 9px;font:800 10px monospace
+
+}
+
+.emblem svg{width:78%;max-width:300px}
+
+.status{text-align:center;color:var(--orange);font-size:10px;margin-top:14px}
+
+.stats{
+
+  display:grid;grid-template-columns:repeat(4,1fr);
+
+  border-bottom:1px solid var(--line)
+
+}
+
+.stat{padding:25px 12px;border-right:1px solid var(--line)}
+
+.stat:last-child{border:0}
+
+.stat strong{display:block;font-size:34px}
+
+.stat small{font-size:10px;color:var(--muted)}
+
+section{padding:75px 0}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+
+.card{
+
+  background:var(--panel);border:1px solid var(--line);
+
+  color:var(--text);padding:25px;text-align:left;
+
+  cursor:pointer;min-height:220px
+
+}
+
+.card:hover,.archive-item:hover{border-color:var(--orange)}
+
+.card small,.archive-item small{color:var(--orange)}
+
+.card h3{font-size:23px;line-height:1.2;margin:28px 0 12px}
+
+.card p{font-size:13px}
+
+.archive-section{
+
+  background:#151718;border-top:1px solid var(--line);
+
+  border-bottom:1px solid var(--line)
+
+}
+
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+
+.controls input{
+
+  flex:1;min-width:210px;background:#101112;
+
+  border:1px solid var(--line);padding:14px;color:white
+
+}
+
+.controls button{
+
+  background:transparent;border:1px solid var(--line);
+
+  color:#ddd;padding:12px;cursor:pointer
+
+}
+
+.controls button.active{background:var(--orange);color:#111}
+
+.archive-grid{
+
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+
+}
+
+.archive-item{
+
+  display:block;background:#202223;border:1px solid var(--line);
+
+  padding:18px;min-height:115px
+
+}
+
+.archive-item strong{display:block;font-size:14px;margin:10px 0}
+
+.archive-item span{color:#999;font-size:10px}
+
+.notice{
+
+  margin:25px 0;padding:18px;
+
+  border-left:3px solid var(--orange);
+
+  background:#2a1f19;color:#e9c9b7;font-size:13px
+
+}
+
+.protocol{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+
+.steps p{border-bottom:1px solid var(--line);padding-bottom:14px}
+
+.steps b{color:var(--orange);margin-right:14px}
+
+.quote{
+
+  border:1px solid var(--line);background:var(--panel);
+
+  padding:30px;font-size:clamp(23px,3vw,35px);
+
+  font-weight:900;line-height:1.3;letter-spacing:-.04em
+
+}
+
+footer{border-top:1px solid var(--line);padding:30px 0;font-size:11px;color:#999}
+
+footer a{color:var(--orange)}
+
+.modal{
+
+  display:none;position:fixed;inset:0;background:#000d;
+
+  z-index:20;align-items:center;justify-content:center;padding:20px
+
+}
+
+.modal.open{display:flex}
+
+.dialog{
+
+  width:min(540px,100%);background:#1c1e20;
+
+  border:1px solid var(--orange);padding:28px
+
+}
+
+.close{
+
+  float:right;border:0;background:transparent;
+
+  color:white;font-size:28px;cursor:pointer
+
+}
+
+@media(max-width:800px){
+
+  .hero-grid,.protocol{grid-template-columns:1fr}
+
+  .emblem{max-width:400px}
+
+  nav .links{display:none}
+
+  .cards{grid-template-columns:1fr 1fr}
+
+  .archive-grid{grid-template-columns:1fr 1fr}
+
+}
+
+@media(max-width:520px){
+
+  .hero{padding:55px 0}
+
+  h1{font-size:68px}
+
+  .cards,.archive-grid{grid-template-columns:1fr}
+
+  .stats{grid-template-columns:1fr 1fr}
+
+  .stat:nth-child(2){border-right:0}
+
+  nav .btn{padding:9px;font-size:10px}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="wrap">
+
+  <a class="logo" href="#home">RABBIT<span class="orange">404</span></a>
+
+  <div class="links mono">
+
+    <a href="#cases">CASE FILES</a>
+
+    <a href="#archive">THE ARCHIVE</a>
+
+    <a href="#protocol">PROTOCOL</a>
+
+  </div>
+
+  <a class="btn mono" target="_blank" rel="noopener"
+
+     href="https://github.com/MiaAI-Lab/GPT-6.1-Terra-100-HTML-files">
+
+    VIEW SOURCE ↗
+
+  </a>
+
+</nav>
+
+</header>
+
+<main id="home">
+
+<div class="hero">
+
+<div class="wrap hero-grid">
+
+  <div>
+
+    <div class="kicker mono">● INDEPENDENT INVESTIGATION // CASE 001</div>
+
+    <h1>THE<br><span class="orange">TERRA</span><br>FILES.</h1>
+
+    <p>100 HTML experiments. One mysterious model name.
+
+       A public repository full of questions.
+
+       We follow the source code, not the hype.</p>
+
+    <div class="actions">
+
+      <a class="btn fill mono" href="#archive">ENTER THE ARCHIVE ↓</a>
+
+      <a class="btn mono" href="#protocol">EXAMINE THE EVIDENCE ↗</a>
+
+    </div>
+
+  </div>
+
+  <div>
+
+    <div class="emblem">
+
+      <svg viewBox="0 0 300 300" fill="none" aria-label="Rabbit emblem">
+
+        <circle cx="150" cy="150" r="118" stroke="#ff702e"
+
+                stroke-width="2" stroke-dasharray="5 9"/>
+
+        <circle cx="150" cy="150" r="97" stroke="#ff702e"
+
+                stroke-opacity=".4"/>
+
+        <path d="M113 132 91 34Q134 26 143 123M167 122 207 35Q242 55 190 137"
+
+              stroke="#ff702e" stroke-width="12" stroke-linejoin="round"/>
+
+        <path d="M86 146Q70 227 150 256Q230 224 213 146Q150 102 86 146Z"
+
+              fill="#18191a" stroke="#ff702e" stroke-width="11"/>
+
+        <path d="m111 176 20 9-20 8m78-17-20 9 20 8"
+
+              stroke="#ff702e" stroke-width="9" stroke-linejoin="round"/>
+
+        <path d="m139 211 11 9 11-9"
+
+              stroke="#ff702e" stroke-width="8"/>
+
+      </svg>
+
+    </div>
+
+    <div class="status mono">
+
+      SUBJECT: GPT-6.1-TERRA // STATUS: UNVERIFIED
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="wrap stats mono">
+
+  <div class="stat"><strong>100</strong><small>HTML STUDIES CLAIMED</small></div>
+
+  <div class="stat"><strong>01</strong><small>PUBLIC REPOSITORY</small></div>
+
+  <div class="stat"><strong>0</strong><small>MODEL ORIGIN VERIFIED</small></div>
+
+  <div class="stat"><strong>∞</strong><small>QUESTIONS WORTH ASKING</small></div>
+
+</div>
+
+<section id="cases" class="wrap">
+
+  <div class="kicker mono">// INTELLIGENCE DESK</div>
+
+  <h2>OPEN CASE FILES</h2>
+
+  <p>Separate what the repository says from what independent evidence establishes.</p>
+
+  <div class="cards">
+
+    <button class="card" data-case="0">
+
+      <small class="mono">FILE 001 // OPEN</small>
+
+      <h3>The Model Name</h3>
+
+      <p>Does the GPT-6.1-Terra label correspond to a publicly documented model?</p>
+
+    </button>
+
+    <button class="card" data-case="1">
+
+      <small class="mono">FILE 002 // OPEN</small>
+
+      <h3>The 100 Experiments</h3>
+
+      <p>Inspect the HTML studies and compare their structure.</p>
+
+    </button>
+
+    <button class="card" data-case="2">
+
+      <small class="mono">FILE 003 // OPEN</small>
+
+      <h3>Follow the Provenance</h3>
+
+      <p>Explore commit history, authorship, metadata and external references.</p>
+
+    </button>
+
+  </div>
+
+</section>
+
+<section id="archive" class="archive-section">
+
+<div class="wrap">
+
+  <div class="kicker mono">// ACCESS GRANTED</div>
+
+  <h2>THE ARCHIVE</h2>
+
+  <p>Explore investigation leads and browse the original repository.
+
+     Archive entries are illustrative research categories, not verified source filenames.</p>
+
+  <div class="controls">
+
+    <input id="search" placeholder="SEARCH ARCHIVE..." aria-label="Search archive">
+
+    <button class="active" data-filter="all">ALL</button>
+
+    <button data-filter="signal">SIGNAL / TECH</button>
+
+    <button data-filter="nature">NATURE / SPACE</button>
+
+  </div>
+
+  <div class="archive-grid" id="results"></div>
+
+  <div class="notice mono">
+
+    ⚠ SOURCE NOTE: The model attribution is unverified.
+
+    Research categories are illustrative. Verify repository files and claims
+
+    independently before sharing.
+
+  </div>
+
+  <div class="actions">
+
+    <a class="btn fill mono" target="_blank" rel="noopener"
+
+       href="https://github.com/MiaAI-Lab/GPT-6.1-Terra-100-HTML-files">
+
+       OPEN ORIGINAL REPOSITORY ↗
+
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<section id="protocol" class="wrap">
+
+  <div class="kicker mono">// RABBIT404 STANDARD</div>
+
+  <h2>QUESTION EVERYTHING.<br>VERIFY SOMETHING.</h2>
+
+  <div class="protocol">
+
+    <div class="steps">
+
+      <p><b>01</b> Identify the exact claim and publisher.</p>
+
+      <p><b>02</b> Inspect source code, metadata and history.</p>
+
+      <p><b>03</b> Seek independent corroboration.</p>
+
+      <p><b>04</b> Publish uncertainty clearly.</p>
+
+    </div>
+
+    <div class="quote">
+
+      BE PROVOCATIVE ABOUT <span class="orange">INSTITUTIONS.</span>
+
+      PRECISE ABOUT <span class="orange">FACTS.</span>
+
+      RESPECTFUL TOWARD <span class="orange">PEOPLE.</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div class="wrap mono">
+
+  © <span id="year"></span> RABBIT404 // THE TRUTH REQUIRES RECEIPTS.
+
+  · INDEPENDENT PROJECT ·
+
+  <a href="https://github.com/MiaAI-Lab/GPT-6.1-Terra-100-HTML-files">
+
+    ORIGINAL SOURCE ↗
+
+  </a>
+
+</div>
+
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+  <div class="dialog">
+
+    <button class="close" id="close" aria-label="Close">×</button>
+
+    <div class="kicker mono">CLASSIFIED // CASE FILE</div>
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalBody"></p>
+
+    <a class="btn fill mono" target="_blank" rel="noopener"
+
+       href="https://github.com/MiaAI-Lab/GPT-6.1-Terra-100-HTML-files">
+
+       OPEN PRIMARY SOURCE ↗
+
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+
+const entries=[
+
+  ["001","Signal Analysis","signal"],
+
+  ["002","Digital Provenance","signal"],
+
+  ["003","Orbital Visualizations","nature"],
+
+  ["004","Generative Interfaces","signal"],
+
+  ["005","Atmospheric Studies","nature"],
+
+  ["006","Metadata Inspection","signal"],
+
+  ["007","Visual Experiments","nature"],
+
+  ["008","Code Fingerprints","signal"],
+
+  ["009","Model Attribution","signal"],
+
+  ["010","Space Simulations","nature"],
+
+  ["011","Interactive Systems","signal"],
+
+  ["012","Repository History","signal"]
+
+];
+
+let filter="all";
+
+const results=document.getElementById("results");
+
+const search=document.getElementById("search");
+
+function render(){
+
+  const query=search.value.toLowerCase();
+
+  const visible=entries.filter(item=>
+
+    (filter==="all"||item[2]===filter) &&
+
+    (item[1].toLowerCase().includes(query)||item[0].includes(query))
+
+  );
+
+  results.innerHTML=visible.map(item=>`
+
+    <a class="archive-item"
+
+       href="https://github.com/MiaAI-Lab/GPT-6.1-Terra-100-HTML-files"
+
+       target="_blank" rel="noopener">
+
+      <small class="mono">LEAD_${item[0]} // EXPLORE ↗</small>
+
+      <strong>${item[1]}</strong>
+
+      <span class="mono">${item[2].toUpperCase()} · RESEARCH TOPIC</span>
+
+    </a>
+
+  `).join("")||"<p>No matching research leads.</p>";
+
+}
+
+search.addEventListener("input",render);
+
+document.querySelectorAll("[data-filter]").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    filter=button.dataset.filter;
+
+    document.querySelectorAll("[data-filter]").forEach(b=>
+
+      b.classList.toggle("active",b===button)
+
+    );
+
+    render();
+
+  });
+
+});
+
+const cases=[
+
+  [
+
+    "The Model Name",
+
+    "The repository uses the name GPT-6.1-Terra. A repository title alone does not establish that a model exists or authored the files. Independent documentation is required."
+
+  ],
+
+  [
+
+    "The 100 Experiments",
+
+    "The repository describes a collection of HTML experiments. Inspect the actual files and commit history before drawing conclusions about authorship."
+
+  ],
+
+  [
+
+    "Follow the Provenance",
+
+    "Review commit history, timestamps, authorship metadata and linked material. Metadata provides clues, not automatic proof of origin."
+
+  ]
+
+];
+
+const modal=document.getElementById("modal");
+
+document.querySelectorAll("[data-case]").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    const selected=cases[Number(button.dataset.case)];
+
+    document.getElementById("modalTitle").textContent=selected[0];
+
+    document.getElementById("modalBody").textContent=selected[1];
+
+    modal.classList.add("open");
+
+    document.getElementById("close").focus();
+
+  });
+
+});
+
+function closeModal(){modal.classList.remove("open")}
+
+document.getElementById("close").addEventListener("click",closeModal);
+
+modal.addEventListener("click",e=>{
+
+  if(e.target===modal)closeModal();
+
+});
+
+document.addEventListener("keydown",e=>{
+
+  if(e.key==="Escape")closeModal();
+
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+render();
+
+</script>
+
+</body>
+
+</html>
